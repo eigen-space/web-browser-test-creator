@@ -44,6 +44,8 @@ export class SpecCreationRunner {
 
         const outputFile = path.join(this.outputDir, this.normalizeFileName(specTitle));
         this.fsManager.writeFile(outputFile, generatedSpec);
+        // eslint-disable-next-line
+        console.log(`Spec for "${specTitle}" scenario  is generated!`);
     }
 
     // noinspection JSMethodCanBeStatic
@@ -61,6 +63,6 @@ export class SpecCreationRunner {
     // noinspection JSMethodCanBeStatic
     private normalizeFileName(name: string): string {
         const normalizedName = name.replace(/\s/g, '-');
-        return `${normalizedName}.ts`;
+        return `${normalizedName}.spec.ts`;
     }
 }

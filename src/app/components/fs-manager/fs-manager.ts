@@ -1,6 +1,7 @@
 import { SpecSuitConfig } from '../../types/spec-config';
 import { walkThrough } from '@eigenspace/helper-scripts';
 import * as fs from 'fs';
+import * as path from 'path';
 
 export class FsManager {
 
@@ -16,6 +17,13 @@ export class FsManager {
 
     // noinspection JSMethodCanBeStatic
     writeFile(pathFile: string, data: string): void {
+        const onlyDirPath = path.dirname(pathFile);
+        this.createPath(onlyDirPath);
         fs.writeFileSync(pathFile, data);
+    }
+
+    // noinspection JSMethodCanBeStatic
+    createPath(dirPath: string): void {
+        fs.mkdirSync(dirPath, { recursive: true });
     }
 }

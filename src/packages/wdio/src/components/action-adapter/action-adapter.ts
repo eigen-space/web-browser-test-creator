@@ -3,7 +3,7 @@ import { AutomationToolActions } from '../../../../../app/types/automation-tool-
 export class ActionAdapter implements AutomationToolActions {
 
     openPage(args: { url: string }): string {
-        return `browser.url('${args.url}')`;
+        return `browser.url('${args.url}');`;
     };
 
     inputValueBySelector(args: { value: string, targetSelector: string }): string {
@@ -18,13 +18,9 @@ export class ActionAdapter implements AutomationToolActions {
         // TODO Add wdio image comprase typings
         return `
             // @ts-ignore
-            expect(browser.checkFullPageScreen('${args.title}').toEqual(0);
+            expect(browser.checkFullPageScreen('${args.title}')).toEqual(0);
         `;
     };
-
-    waitUntil(): string {
-        return '';
-    }
 
     wrapToHeaderSpec(args: { title: string, scenarios: string }): string {
         return `

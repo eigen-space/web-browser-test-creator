@@ -5,7 +5,7 @@ exports.config = {
     runner: 'local',
     path: '/wd/hub',
     specs: [
-        './src/specs/**/*.ts'
+        './src/specs/generated/*.ts'
     ],
     maxInstances: 10,
     capabilities: [{ maxInstances: 5, browserName: 'chrome' }],
