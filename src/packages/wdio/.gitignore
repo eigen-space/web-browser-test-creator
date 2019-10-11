@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /out-tsc
+/src/specs/generated
 
 # dependencies
 /node_modules

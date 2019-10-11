@@ -20,7 +20,8 @@ export class SpecBuilder {
     get(config: SpecSuitConfig): string {
         const scenariosParts = config.scenarios.map(scenario => {
             let steps = scenario.steps.map(step => this.manager.getConvertedStep(step));
-
+            // TODO Think about adding check page screen step
+            steps.push(this.adapter.checkPageScreen({ title: config.title! }));
             if (steps.some(step => !Boolean(step))) {
                 // eslint-disable-next-line no-console
                 console.log(`Some step of ${scenario.title} scenario isn't recognized`);
