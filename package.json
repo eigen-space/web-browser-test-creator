@@ -14,7 +14,20 @@
         "lint:code": "eslint --ext .js,.ts",
         "lint:fix": "yarn lint:code --fix",
         "lint:markdown": "node ./node_modules/@eigenspace/codestyle/scripts/markdown-lint.js",
-        "lint": "yarn lint:code . && yarn lint:markdown"
+        "lint": "yarn lint:code . && yarn lint:markdown",
+        "hooks:pre-push": "yarn lint"
+    },
+    "husky": {
+        "hooks": {
+            "pre-push": "yarn hooks:pre-push",
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{ts,tsx}": [
+            "yarn lint:fix",
+            "git add"
+        ]
     },
     "devDependencies": {
         "@eigenspace/codestyle": "1.1.67",
@@ -22,6 +35,8 @@
         "@types/node": "12.7.12",
         "eslint": "5.16.0",
         "eslint-plugin-eigenspace-script": "0.0.18",
+        "husky": "2.3.0",
+        "lint-staged": "8.1.7",
         "typescript": "3.5.3"
     },
     "dependencies": {
