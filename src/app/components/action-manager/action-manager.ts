@@ -7,12 +7,11 @@ import { PressButtonBySelectorActionWorker } from '../../entities/action-workers
 export class ActionManager {
     private workers: ActionWorker[] = [];
 
-    constructor(automationTool: PageActionGenerator) {
-        const workerOptions = { automationTool };
+    constructor(actionGenerator: PageActionGenerator) {
         this.workers = [
-            new InputBySelectorActionWorker(workerOptions),
-            new OpenPageActionWorker(workerOptions),
-            new PressButtonBySelectorActionWorker(workerOptions)
+            new InputBySelectorActionWorker(actionGenerator),
+            new OpenPageActionWorker(actionGenerator),
+            new PressButtonBySelectorActionWorker(actionGenerator)
         ];
     }
 

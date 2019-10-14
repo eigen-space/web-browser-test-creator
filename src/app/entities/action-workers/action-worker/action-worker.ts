@@ -1,15 +1,9 @@
 import { Dictionary } from '@eigenspace/common-types';
 import { PageActionGenerator } from '../../../types/page-action-generator';
 
-interface ActionWorkerOptions {
-    automationTool: PageActionGenerator;
-}
-
 export abstract class ActionWorker {
-    protected actionGenerator: PageActionGenerator;
 
-    constructor(options: ActionWorkerOptions) {
-        this.actionGenerator = options.automationTool;
+    constructor(protected actionGenerator: PageActionGenerator) {
     }
 
     do(step: string): string {
