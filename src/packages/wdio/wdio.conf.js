@@ -28,13 +28,7 @@ exports.config = {
     ],
     framework: 'mocha',
     reporters: ['spec'],
-    mochaOpts: {
-        ui: 'bdd',
-        timeout: 60000,
-        require: [
-            'tsconfig-paths/register'
-        ]
-    },
+    mochaOpts: { ui: 'bdd', timeout: 60000, require: ['tsconfig-paths/register'] },
     before: function() {
         require('ts-node').register({ files: true });
     }

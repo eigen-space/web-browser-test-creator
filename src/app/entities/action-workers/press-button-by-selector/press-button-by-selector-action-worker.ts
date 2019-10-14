@@ -3,8 +3,8 @@ import { ActionWorker } from '../action-worker/action-worker';
 
 export class PressButtonBySelectorActionWorker extends ActionWorker {
 
-    protected runAdapterMethod(args: { targetSelector: string }): string {
-        return this.adapter.pressOnButtonBySelector(args);
+    protected runAutomationToolMethod(args: { targetSelector: string }): string {
+        return this.actionGenerator.pressOnButtonBySelector(args);
     };
 
     protected parseRawArgs(rawArgs: RegExpExecArray | null): Dictionary<string> {
