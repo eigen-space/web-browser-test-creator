@@ -3,8 +3,8 @@ import { ActionWorker } from '../action-worker/action-worker';
 
 export class InputBySelectorActionWorker extends ActionWorker {
 
-    protected runAdapterMethod(args: { value: string, targetSelector: string }): string {
-        return this.adapter.inputValueBySelector(args);
+    protected runAutomationToolMethod(args: { value: string, targetSelector: string }): string {
+        return this.actionGenerator.inputValueBySelector(args);
     };
 
     protected parseRawArgs(rawArgs: RegExpExecArray | null): Dictionary<string> {

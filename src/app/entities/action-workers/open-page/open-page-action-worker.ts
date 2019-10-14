@@ -3,8 +3,8 @@ import { ActionWorker } from '../action-worker/action-worker';
 
 export class OpenPageActionWorker extends ActionWorker {
 
-    protected runAdapterMethod(args: { url: string }): string {
-        return this.adapter.openPage(args);
+    protected runAutomationToolMethod(args: { url: string }): string {
+        return this.actionGenerator.openPage(args);
     };
 
     protected parseRawArgs(rawArgs: RegExpExecArray | null): Dictionary<string> {

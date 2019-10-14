@@ -1,26 +1,18 @@
 import { SpecBuilder } from '../spec-builder/spec-builder';
-import { AutomationToolActions } from '../../types/automation-tool-actions';
+import { ActionGenerator } from '../../types/action-generator';
 import { ActionManager } from '../action-manager/action-manager';
 import * as path from 'path';
 import { FsManager } from '../fs-manager/fs-manager';
 
-interface SpecCreationRunnerOptions {
-    adapter: AutomationToolActions;
-    outputDir: string;
-}
-
 // noinspection JSUnusedGlobalSymbols
-export class SpecCreationRunner {
+export class SpecGenerator {
     private builder: SpecBuilder;
-    private fsManager: FsManager;
-    private readonly outputDir: string;
+    private fsManager = new FsManager();
 
     // noinspection JSUnusedGlobalSymbols
-    constructor(options: SpecCreationRunnerOptions) {
-        const manager = new ActionManager({ adapter: options.adapter });
-        this.builder = new SpecBuilder({ manager, adapter: options.adapter });
-        this.fsManager = new FsManager();
-        this.outputDir = options.outputDir;
+    constructor(actionGenerator: ActionGenerator, private readonly outputDir: string) {
+        const manager = new ActionManager(actionGenerator);
+        this.builder = new SpecBuilder(actionGenerator, manager);
     }
 
     // noinspection JSUnusedGlobalSymbols
