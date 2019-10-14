@@ -1,18 +1,14 @@
-import { PageActions } from '../../types/page-actions';
+import { PageActionGenerator } from '../../types/page-action-generator';
 import { ActionWorker } from '../../entities/action-workers/action-worker/action-worker';
 import { InputBySelectorActionWorker } from '../../entities/action-workers/input-by-selector/input-by-selector-action-worker';
 import { OpenPageActionWorker } from '../../entities/action-workers/open-page/open-page-action-worker';
 import { PressButtonBySelectorActionWorker } from '../../entities/action-workers/press-button-by-selector/press-button-by-selector-action-worker';
 
-interface ActionManagerOptions {
-    adapter: PageActions;
-}
-
 export class ActionManager {
     private workers: ActionWorker[] = [];
 
-    constructor(options: ActionManagerOptions) {
-        const workerOptions = { adapter: options.adapter };
+    constructor(automationTool: PageActionGenerator) {
+        const workerOptions = { automationTool };
         this.workers = [
             new InputBySelectorActionWorker(workerOptions),
             new OpenPageActionWorker(workerOptions),

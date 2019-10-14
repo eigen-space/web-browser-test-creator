@@ -1,6 +1,7 @@
-import { AutomationToolActions } from '../../../../../app/types/automation-tool-actions';
+import { ActionGenerator } from '../../../../../app/types/action-generator';
 
-export class ActionAdapter implements AutomationToolActions {
+// noinspection JSUnusedGlobalSymbols
+export class WebDriverIoActionGenerator implements ActionGenerator {
 
     openPage(args: { url: string }): string {
         return `browser.url('${args.url}');`;
