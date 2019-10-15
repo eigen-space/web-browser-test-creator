@@ -5,7 +5,8 @@ import { OpenPageActionWorker } from '../../entities/action-workers/open-page/op
 import { PressButtonBySelectorActionWorker } from '../../entities/action-workers/press-button-by-selector/press-button-by-selector-action-worker';
 
 export class ActionManager {
-    private workers: ActionWorker[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    private workers: ActionWorker<any>[] = [];
 
     constructor(actionGenerator: PageActionGenerator) {
         this.workers = [
@@ -15,8 +16,14 @@ export class ActionManager {
         ];
     }
 
-    getConvertedStep(step: string): string | undefined {
+    getConvertedStep(step: string): string {
         const correspondingWorker = this.workers.find(worker => worker.checkAffiliation(step));
-        return correspondingWorker ? correspondingWorker.do(step) : undefined;
+
+        if (!correspondingWorker) {
+            // eslint-disable-next-line no-console
+            throw new Error(`'${step}' step isn't recognized`);
+        }
+
+        return correspondingWorker.do(step);
     }
 }
