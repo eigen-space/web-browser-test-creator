@@ -6,7 +6,7 @@ interface ParsedParams {
 }
 
 export class InputBySelectorActionWorker extends ActionWorker<ParsedParams> {
-    protected requiredFieldNames: (keyof ParsedParams)[] = ['targetSelector'];
+    protected requiredFieldNames: (keyof ParsedParams)[] = ['value', 'targetSelector'];
 
     protected runAutomationToolMethod(args: Required<ParsedParams>): string {
         return this.actionGenerator.inputValueBySelector(args);
@@ -14,7 +14,7 @@ export class InputBySelectorActionWorker extends ActionWorker<ParsedParams> {
 
     protected parseRawArgs(rawArgs: RegExpExecArray): ParsedParams {
         const [, value, targetSelector] = rawArgs;
-        return { value, targetSelector };
+        return { value: value.trim(), targetSelector: targetSelector.trim() };
     };
 
     protected getStepPattern(): RegExp {
