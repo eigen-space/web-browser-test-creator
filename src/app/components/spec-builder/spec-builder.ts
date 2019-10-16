@@ -10,7 +10,7 @@ export class SpecBuilder {
         private manager: ActionManager) {
     }
 
-    get(config: SpecSuitConfig): string {
+    run(config: SpecSuitConfig): string {
         const scenarioSpecItems = config.scenarios.map(scenario => {
             const steps = scenario.steps.map(step => this.manager.getConvertedStep(step));
             steps.push(this.actionGenerator.checkPageScreen({ title: config.title! }));
