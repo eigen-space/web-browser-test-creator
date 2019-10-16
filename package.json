@@ -18,7 +18,9 @@
         "lint:fix": "yarn lint:code --fix",
         "lint:markdown": "node ./node_modules/@eigenspace/codestyle/scripts/markdown-lint.js",
         "lint": "yarn lint:code . && yarn lint:markdown",
-        "hooks:pre-push": "yarn lint"
+        "hooks:pre-push": "yarn lint",
+        "test": "jest",
+        "test:ci": "yarn test --ci"
     },
     "husky": {
         "hooks": {
@@ -35,11 +37,14 @@
     "devDependencies": {
         "@eigenspace/codestyle": "1.1.67",
         "@eigenspace/common-types": "0.0.20",
+        "@types/jest": "24.0.13",
         "@types/node": "12.7.12",
         "eslint": "5.16.0",
         "eslint-plugin-eigenspace-script": "0.0.18",
         "husky": "2.3.0",
+        "jest": "24.7.1",
         "lint-staged": "8.1.7",
+        "ts-jest": "24.0.2",
         "typescript": "3.5.3"
     },
     "dependencies": {

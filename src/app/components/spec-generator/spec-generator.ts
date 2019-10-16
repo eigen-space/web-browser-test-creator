@@ -3,11 +3,14 @@ import { ActionGenerator } from '../../types/action-generator';
 import { ActionManager } from '../action-manager/action-manager';
 import * as path from 'path';
 import { FsManager } from '../fs-manager/fs-manager';
+import { SpecSuitConfig } from '../../types/spec-config';
+import { Normalizer } from '../normalizer/normalizer';
 
 // noinspection JSUnusedGlobalSymbols
 export class SpecGenerator {
     private builder: SpecBuilder;
     private fsManager = new FsManager();
+    private normalizer = new Normalizer();
 
     // noinspection JSUnusedGlobalSymbols
     constructor(actionGenerator: ActionGenerator, private readonly outputDir: string) {
@@ -16,45 +19,27 @@ export class SpecGenerator {
     }
 
     // noinspection JSUnusedGlobalSymbols
-    run(configPath: string): void {
-        this.fsManager.walkThrough(configPath, this.visitFile.bind(this));
+    run(configDir: string): void {
+        this.fsManager.walkThrough(configDir, this.visitFile.bind(this));
     }
 
     private visitFile(dir: string, file: string): void {
-        const jsonPostfix = 'json';
-        if (file.endsWith(jsonPostfix)) {
+        const jsonExtName = '.json';
+        if (path.extname(file) === jsonExtName) {
             this.generateSpec(dir, file);
         }
     }
 
     private generateSpec(dir: string, file: string): void {
         const pathToConfig = path.join(dir, file);
-        const config = this.fsManager.readJsonFile(pathToConfig);
+        const config = this.fsManager.readJsonFile(pathToConfig) as SpecSuitConfig;
 
-        const specTitle = this.normalizeTitle(config.title, file);
+        const specTitle = config.title || this.normalizer.normalizeTitle(file);
         const generatedSpec = this.builder.run({ ...config, title: specTitle });
 
-        const outputFile = path.join(this.outputDir, this.normalizeFileName(specTitle));
+        const outputFile = path.join(this.outputDir, this.normalizer.normalizeSpecFileName(specTitle));
         this.fsManager.writeFile(outputFile, generatedSpec);
         // eslint-disable-next-line
         console.log(`Spec for "${specTitle}" scenario  is generated!`);
-    }
-
-    // noinspection JSMethodCanBeStatic
-    private normalizeTitle(title: string | undefined, fileName: string): string {
-        if (title) {
-            return title;
-        }
-
-        return fileName.replace(/[-_]/g, ' ')
-            .split('.')
-            .slice(0, -1)
-            .join('.');
-    }
-
-    // noinspection JSMethodCanBeStatic
-    private normalizeFileName(name: string): string {
-        const normalizedName = name.replace(/\s/g, '-');
-        return `${normalizedName}.spec.ts`;
     }
 }

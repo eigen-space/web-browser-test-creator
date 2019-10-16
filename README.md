@@ -16,5 +16,7 @@ Description of the solution can be found [here](https://www.notion.so/cybernatio
 * `eslint-plugin-eigenspace-script` - Includes set of script linting rules and configuration for them.
 * `typescript` - is a superset of JavaScript that have static type-checking and ECMAScript features.
 * `husky` - used for configure git hooks.
+* `jest` - spec runner.
 * `lint-staged` - used for configure linters against staged git files.
 * `eslint` - it checks code for readability, maintainability, and functionality errors.
+* `ts-jest` - it lets you use Jest to test projects written in TypeScript.
