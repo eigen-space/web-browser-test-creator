@@ -24,6 +24,8 @@ export class FsManager {
 
     // noinspection JSMethodCanBeStatic
     createPath(dirPath: string): void {
+        // This "recursive" option is added only in node@10.12.0
+        // https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V10.md#2018-10-10-version-10120-current-targos
         fs.mkdirSync(dirPath, { recursive: true });
     }
 }

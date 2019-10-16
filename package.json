@@ -8,6 +8,9 @@
         "url": "git+https://github.com/cybernated/web-e2e-spec-creator.git"
     },
     "license": "MIT",
+    "engines": {
+        "node": ">= 10.12.0"
+    },
     "scripts": {
         "build": "yarn compile",
         "compile": "tsc",
