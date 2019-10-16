@@ -10,15 +10,15 @@ export class SpecBuilder {
         private manager: ActionManager) {
     }
 
-    run(config: SpecSuitConfig): string {
+    run(config: Required<SpecSuitConfig>): string {
         const scenarioSpecItems = config.scenarios.map(scenario => {
             const steps = scenario.steps.map(step => this.manager.getConvertedStep(step));
-            steps.push(this.actionGenerator.checkPageScreen({ title: config.title! }));
+            steps.push(this.actionGenerator.checkPageScreen({ title: scenario.title }));
             return this.actionGenerator.wrapToItemSpec({ title: scenario.title, steps: steps.join(os.EOL) });
         });
 
         const options = {
-            title: config.title!,
+            title: config.title,
             scenarios: scenarioSpecItems.join(os.EOL)
         };
 
