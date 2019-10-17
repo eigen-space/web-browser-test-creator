@@ -1,24 +1,23 @@
-import { InputBySelectorActionWorker } from './input-by-selector-action-worker';
+import { ScrollToElementActionWorker } from './scroll-to-element-action-worker';
 import { pageActionGeneratorMock } from '../../../mocks/page-action-generator.mock';
 
-describe('InputBySelectorActionWorker', () => {
+describe('OpenPageActionWorker', () => {
 
-    function buildStep(value = '', selector = ''): string {
-        return `Enter ${value} in the input field by selector ${selector}`;
+    function buildStep(selector = ''): string {
+        return `Scroll to element by selector ${selector}`;
     }
 
-    const worker = new InputBySelectorActionWorker(pageActionGeneratorMock);
+    const worker = new ScrollToElementActionWorker(pageActionGeneratorMock);
 
     describe('#do', () => {
 
         it('should call the adapter method with the correct parameters', () => {
-            const value = 'someValue';
-            const targetSelector = '//[@id=selector]';
-            const step = buildStep(value, targetSelector);
+            const targetSelector = 'someSelector';
+            const step = buildStep(targetSelector);
 
             worker.do(step);
 
-            expect(pageActionGeneratorMock.inputValueBySelector).toBeCalledWith({ value, targetSelector });
+            expect(pageActionGeneratorMock.scrollToElement).toBeCalledWith({ targetSelector });
         });
 
         it('should throw an error when the step does not contain the some parameters', () => {

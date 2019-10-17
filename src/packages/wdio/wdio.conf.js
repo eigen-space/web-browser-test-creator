@@ -8,7 +8,11 @@ exports.config = {
         './src/specs/generated/*.ts'
     ],
     maxInstances: 10,
-    capabilities: [{ maxInstances: 5, browserName: 'chrome' }],
+    capabilities: [{
+        maxInstances: 5,
+        browserName: 'chrome',
+        'goog:chomeOptrions': { args: ['--window-size=300,300'] }
+    }],
     logLevel: 'info',
     bail: 0,
     waitforTimeout: 10000,
@@ -31,5 +35,7 @@ exports.config = {
     mochaOpts: { ui: 'bdd', timeout: 60000, require: ['tsconfig-paths/register'] },
     before: function() {
         require('ts-node').register({ files: true });
+        // Set window size
+        browser.setWindowSize(375, 700);
     }
 };
