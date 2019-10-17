@@ -1,5 +1,5 @@
-import { PageActionGenerator } from '../../../types/page-action-generator';
 import { PressButtonBySelectorActionWorker } from './press-button-by-selector-action-worker';
+import { pageActionGeneratorMock } from '../../../mocks/page-action-generator.mock';
 
 describe('PressButtonBySelectorActionWorker', () => {
 
@@ -7,14 +7,7 @@ describe('PressButtonBySelectorActionWorker', () => {
         return `Press on button by selector ${targetSelector}`;
     }
 
-    const generator: PageActionGenerator = {
-        openPage: jest.fn(),
-        inputValueBySelector: jest.fn(),
-        pressOnButtonBySelector: jest.fn(),
-        checkPageScreen: jest.fn()
-    };
-
-    const worker = new PressButtonBySelectorActionWorker(generator);
+    const worker = new PressButtonBySelectorActionWorker(pageActionGeneratorMock);
 
     describe('#do', () => {
 
@@ -24,7 +17,7 @@ describe('PressButtonBySelectorActionWorker', () => {
 
             worker.do(step);
 
-            expect(generator.pressOnButtonBySelector).toBeCalledWith({ targetSelector });
+            expect(pageActionGeneratorMock.pressOnButtonBySelector).toBeCalledWith({ targetSelector });
         });
 
         it('should throw an error when the step does not contain the some parameters', () => {

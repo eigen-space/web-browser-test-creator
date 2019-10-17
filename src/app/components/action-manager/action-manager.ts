@@ -3,6 +3,8 @@ import { ActionWorker } from '../../entities/action-workers/action-worker/action
 import { InputBySelectorActionWorker } from '../../entities/action-workers/input-by-selector/input-by-selector-action-worker';
 import { OpenPageActionWorker } from '../../entities/action-workers/open-page/open-page-action-worker';
 import { PressButtonBySelectorActionWorker } from '../../entities/action-workers/press-button-by-selector/press-button-by-selector-action-worker';
+import { PauseActionWorker } from '../../entities/action-workers/pause/pause-action-worker';
+import { ScrollToElementActionWorker } from '../../entities/action-workers/scrollToElement/scroll-to-element-action-worker';
 
 export class ActionManager {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -12,7 +14,9 @@ export class ActionManager {
         this.workers = [
             new InputBySelectorActionWorker(actionGenerator),
             new OpenPageActionWorker(actionGenerator),
-            new PressButtonBySelectorActionWorker(actionGenerator)
+            new PressButtonBySelectorActionWorker(actionGenerator),
+            new PauseActionWorker(actionGenerator),
+            new ScrollToElementActionWorker(actionGenerator)
         ];
     }
 
