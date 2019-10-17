@@ -3,7 +3,6 @@
     "compilerOptions": {
         "module": "commonjs",
         "moduleResolution": "node",
-        "skipLibCheck": true,
         "outDir": "dist",
         "typeRoots": [
             "node_modules/@types"
@@ -13,6 +12,7 @@
         "src"
     ],
     "exclude": [
+        "node_modules",
         "**/*.spec.ts",
         "src/packages/wdio/src/specs"
     ]
