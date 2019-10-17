@@ -32,7 +32,7 @@ export class SpecGenerator {
 
     private generateSpec(dir: string, file: string): void {
         const pathToConfig = path.join(dir, file);
-        const config = this.fsManager.readJsonFile(pathToConfig) as SpecSuitConfig;
+        const config = this.fsManager.readJsonFile<SpecSuitConfig>(pathToConfig);
 
         const specTitle = config.title || this.normalizer.normalizeTitle(file);
         const generatedSpec = this.builder.run({ ...config, title: specTitle });
