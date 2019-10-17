@@ -11,7 +11,7 @@ describe('Normalizer', () => {
     });
 
     describe('#normalizeSpecFileName', () => {
-        it('should from the name suit get the file name', () => {
+        it('should get the file name from the suite name', () => {
             expect(normalizer.normalizeSpecFileName('file name')).toEqual('file-name.spec.ts');
         });
     });

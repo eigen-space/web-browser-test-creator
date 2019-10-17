@@ -11,7 +11,7 @@ export class FsManager {
     }
 
     // noinspection JSMethodCanBeStatic
-    readJsonFile(filename: string): AnyDictionary {
+    readJsonFile<T extends AnyDictionary>(filename: string): T {
         return JSON.parse(fs.readFileSync(filename, 'utf8'));
     }
 
