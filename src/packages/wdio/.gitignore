@@ -4,6 +4,7 @@
 /dist
 /out-tsc
 /src/specs/generated
+/src/specs/screenshotBaseline
 
 # dependencies
 /node_modules

@@ -8,11 +8,11 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
     };
 
     inputValueBySelector(args: { value: string, targetSelector: string }): string {
-        return `$('${args.targetSelector}').setValue('${args.value}');`;
+        return `browser.$('${args.targetSelector}').setValue('${args.value}');`;
     };
 
     pressOnButtonBySelector(args: { targetSelector: string }): string {
-        return `$('${args.targetSelector}').click();`;
+        return `browser.$('${args.targetSelector}').click();`;
     };
 
     checkPageScreen(args: { title: string }): string {
@@ -22,6 +22,14 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
             expect(browser.checkFullPageScreen('${args.title}')).toEqual(0);
         `;
     };
+
+    pause(args: { duration: string }): string {
+        return `browser.pause(${args.duration});`;
+    }
+
+    scrollToElement(args: { targetSelector: string }): string {
+        return `browser.$('${args.targetSelector}').scrollIntoView();`;
+    }
 
     wrapToHeaderSpec(args: { title: string, scenarios: string }): string {
         return `
