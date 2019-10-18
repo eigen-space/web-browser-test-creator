@@ -1,7 +1,7 @@
-import { SpecSuitConfig } from '../../types/spec-config';
 import { walkThrough } from '@eigenspace/helper-scripts';
 import * as fs from 'fs';
 import * as path from 'path';
+import { AnyDictionary } from '@eigenspace/common-types';
 
 export class FsManager {
 
@@ -11,7 +11,7 @@ export class FsManager {
     }
 
     // noinspection JSMethodCanBeStatic
-    readJsonFile(filename: string): SpecSuitConfig {
+    readJsonFile<T extends AnyDictionary>(filename: string): T {
         return JSON.parse(fs.readFileSync(filename, 'utf8'));
     }
 
@@ -23,7 +23,9 @@ export class FsManager {
     }
 
     // noinspection JSMethodCanBeStatic
-    createPath(dirPath: string): void {
+    private createPath(dirPath: string): void {
+        // This "recursive" option is added only in node@10.12.0
+        // https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V10.md#2018-10-10-version-10120-current-targos
         fs.mkdirSync(dirPath, { recursive: true });
     }
 }
