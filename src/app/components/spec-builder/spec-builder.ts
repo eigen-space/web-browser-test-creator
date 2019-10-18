@@ -10,20 +10,18 @@ export class SpecBuilder {
         private manager: ActionManager) {
     }
 
-    get(config: SpecSuitConfig): string {
-        const scenariosParts = config.scenarios.map(scenario => {
-            let steps = scenario.steps.map(step => this.manager.getConvertedStep(step));
-            // TODO Think about adding check page screen step
-            steps.push(this.actionGenerator.checkPageScreen({ title: config.title! }));
-            if (steps.some(step => !Boolean(step))) {
-                // eslint-disable-next-line no-console
-                console.log(`Some step of ${scenario.title} scenario isn't recognized`);
-                steps = [];
-            }
-
+    run(config: Required<SpecSuitConfig>): string {
+        const scenarioSpecItems = config.scenarios.map(scenario => {
+            const steps = scenario.steps.map(step => this.manager.getConvertedStep(step));
+            steps.push(this.actionGenerator.checkPageScreen({ title: scenario.title }));
             return this.actionGenerator.wrapToItemSpec({ title: scenario.title, steps: steps.join(os.EOL) });
         });
 
-        return this.actionGenerator.wrapToHeaderSpec({ title: config.title!, scenarios: scenariosParts.join(os.EOL) });
+        const options = {
+            title: config.title,
+            scenarios: scenarioSpecItems.join(os.EOL)
+        };
+
+        return this.actionGenerator.wrapToHeaderSpec(options);
     }
 }
