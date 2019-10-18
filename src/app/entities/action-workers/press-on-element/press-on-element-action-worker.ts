@@ -4,23 +4,23 @@ interface ParsedParams {
     data?: string;
 }
 
-export class ScrollToElementActionWorker extends ActionWorker<ParsedParams> {
+export class PressOnElementActionWorker extends ActionWorker<ParsedParams> {
     protected requiredFieldNames: (keyof ParsedParams)[] = ['data'];
 
     protected runAutomationToolMethod(args: Required<ParsedParams>): string {
-        return this.actionGenerator.scrollToElement(args);
+        return this.actionGenerator.pressOnElement(args);
     };
 
     protected parseRawArgs(rawArgs: RegExpExecArray): ParsedParams {
-        const [, data] = rawArgs;
+        const [, , data] = rawArgs;
         return { data };
     };
 
     protected getStepPattern(): RegExp {
-        return /^Scroll\sto\selement\s'(.*)'$/g;
+        return /^Press\son\s(button|element)\s'(.*)'$/g;
     }
 
     protected getStepName(): string {
-        return 'Scroll to element';
+        return 'Press on element';
     }
 }

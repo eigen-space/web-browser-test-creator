@@ -4,15 +4,16 @@
             "title": "Buy tickets",
             "steps": [
                 "Open page on http://localhost:3000/",
-                "Press on button by selector //*[@id=\"app\"]/div/div[3]/div[1]/div/div",
-                "Press on button by selector //*[@id=\"app\"]/div/div[3]/div[1]/div[1]/div[6]/div",
+                "Press on button '+'",
                 "Pause for 1000 ms",
-                "Press on button by selector //*[@id=\"app\"]/div/div[2]/div/div[4]/div/div/div[3]",
+                "Press on button 'Travel to'",
                 "Pause for 1000 ms",
-                "Press on button by selector //*[@id=\"app\"]/div/div[5]/div[2]/div/div",
-                "Scroll to element by selector //*[@id=\"id_H4anFZlyv\"]/div",
-                "Press on button by selector //*[@id=\"id_H4anFZlyv\"]/div",
-                "Scroll to element by selector //*[@id=\"app\"]/div/div[2]/div/div[7]/div/div"
+                "Press on element 'To arrive at'",
+                "Pause for 1000 ms",
+                "Press on button 'Done'",
+                "Scroll to element 'Show detail'",
+                "Press on button 'Show detail'",
+                "Scroll to element 'We've booked the selected ticket'"
             ]
         }
     ]

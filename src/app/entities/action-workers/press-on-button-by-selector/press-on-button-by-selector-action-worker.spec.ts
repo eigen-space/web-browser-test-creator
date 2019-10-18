@@ -1,23 +1,23 @@
-import { ScrollToElementActionWorker } from './scroll-to-element-action-worker';
+import { PressOnButtonBySelectorActionWorker } from './press-on-button-by-selector-action-worker';
 import { pageActionGeneratorMock } from '../../../mocks/page-action-generator.mock';
 
-describe('ScrollToElementActionWorker', () => {
+describe('PressOnButtonBySelectorActionWorker', () => {
 
-    function buildStep(data = ''): string {
-        return `Scroll to element '${data}'`;
+    function buildStep(targetSelector = ''): string {
+        return `Press on button by selector ${targetSelector}`;
     }
 
-    const worker = new ScrollToElementActionWorker(pageActionGeneratorMock);
+    const worker = new PressOnButtonBySelectorActionWorker(pageActionGeneratorMock);
 
     describe('#do', () => {
 
         it('should call the adapter method with the correct parameters', () => {
-            const data = 'data';
-            const step = buildStep(data);
+            const targetSelector = '//[@id=selector]';
+            const step = buildStep(targetSelector);
 
             worker.do(step);
 
-            expect(pageActionGeneratorMock.scrollToElement).toBeCalledWith({ data });
+            expect(pageActionGeneratorMock.pressOnButtonBySelector).toBeCalledWith({ targetSelector });
         });
 
         it('should throw an error when the step does not contain the some parameters', () => {
@@ -34,7 +34,8 @@ describe('ScrollToElementActionWorker', () => {
         });
 
         it('should return false if the worker does not processes this step', () => {
-            expect(worker.checkAffiliation('step')).toBeFalsy();
+            const step = buildStep().replace(' ', '');
+            expect(worker.checkAffiliation(step)).toBeFalsy();
         });
     });
 });

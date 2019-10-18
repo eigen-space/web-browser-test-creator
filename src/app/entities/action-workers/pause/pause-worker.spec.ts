@@ -1,7 +1,7 @@
 import { PauseActionWorker } from './pause-action-worker';
 import { pageActionGeneratorMock } from '../../../mocks/page-action-generator.mock';
 
-describe('OpenPageActionWorker', () => {
+describe('Pause', () => {
 
     function buildStep(duration = ''): string {
         return `Pause for ${duration} ms`;

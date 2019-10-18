@@ -15,6 +15,15 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
         return `browser.$('${args.targetSelector}').click();`;
     };
 
+    pressOnElement(args: { data: string }): string {
+        return `
+            [\`//*[text()="${args.data}"]\`, \`[placeholder="${args.data}"]\`, \`[title="${args.data}"]\`]
+                .map(selector => browser.$(selector))
+                .filter(elem => elem.isExisting())[0]!
+                .click();
+        `;
+    }
+
     checkPageScreen(args: { title: string }): string {
         // TODO Add wdio image comprase typings
         return `
@@ -27,8 +36,17 @@ export class WebDriverIoActionGenerator implements ActionGenerator {
         return `browser.pause(${args.duration});`;
     }
 
-    scrollToElement(args: { targetSelector: string }): string {
+    scrollToElementBySelector(args: { targetSelector: string }): string {
         return `browser.$('${args.targetSelector}').scrollIntoView();`;
+    }
+
+    scrollToElement(args: { data: string }): string {
+        return `
+            [\`//*[text()="${args.data}"]\`, \`[placeholder="${args.data}"]\`, \`[title="${args.data}"]\`]
+                .map(selector => browser.$(selector))
+                .filter(elem => elem.isExisting())[0]!
+                .scrollIntoView();
+        `;
     }
 
     wrapToHeaderSpec(args: { title: string, scenarios: string }): string {
