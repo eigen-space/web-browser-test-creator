@@ -13,7 +13,6 @@
         "src"
     ],
     "exclude": [
-        "**/*.spec.ts",
-        "src/packages/wdio/src/specs"
+        "**/*.spec.ts"
     ]
 }
