@@ -36,6 +36,6 @@ exports.config = {
     before: function() {
         require('ts-node').register({ files: true });
         // Set window size
-        browser.setWindowSize(375, 700);
+        browser.setWindowSize(375, 650);
     }
 };

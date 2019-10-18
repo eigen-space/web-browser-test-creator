@@ -4,11 +4,11 @@ interface ParsedParams {
     targetSelector?: string;
 }
 
-export class PressButtonBySelectorActionWorker extends ActionWorker<ParsedParams> {
+export class ScrollToElementBySelectorActionWorker extends ActionWorker<ParsedParams> {
     protected requiredFieldNames: (keyof ParsedParams)[] = ['targetSelector'];
 
     protected runAutomationToolMethod(args: Required<ParsedParams>): string {
-        return this.actionGenerator.pressOnButtonBySelector(args);
+        return this.actionGenerator.scrollToElementBySelector(args);
     };
 
     protected parseRawArgs(rawArgs: RegExpExecArray): ParsedParams {
@@ -17,10 +17,10 @@ export class PressButtonBySelectorActionWorker extends ActionWorker<ParsedParams
     };
 
     protected getStepPattern(): RegExp {
-        return /^Press\son\sbutton\sby\sselector\s(.*)$/g;
+        return /^Scroll\sto\selement\sby\sselector\s(.*)$/g;
     }
 
     protected getStepName(): string {
-        return 'Press on button by selector';
+        return 'Scroll to element by selector';
     }
 }

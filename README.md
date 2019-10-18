@@ -8,6 +8,25 @@ Description of the solution can be found [here](https://www.notion.so/cybernatio
 
 * node >= 10.12.0
 
+# Install
+To install this package, you should have access to registry https://artifacts.arrival.services.
+
+`yarn add --dev @arrival/web-e2e-spec-generator`
+
+# How to run
+
+1. To use the specification generator, you must implement the **ActionGenerator** interface.
+We can take the [implementation](https://github.com/cybernated/web-wdio-e2e-kit) for webdriverio.
+
+2.Create SpecGenerator Instance
+
+    `const runner = new SpecGenerator(new WebDriverIoActionGenerator(), outputDir);`
+
+3. Run generator with output directory path as parameter
+
+    `runner.run(configsPath);`
+
+
 # Why do we have that dependencies?
 
 * `@eigenspace/helper-scripts` - helps us to travel directory.

@@ -4,5 +4,7 @@ export interface PageActionGenerator {
     pressOnButtonBySelector(args: { targetSelector: string }): string;
     checkPageScreen(args: { title: string }): string;
     pause(args: { duration: string }): string;
-    scrollToElement(args: { targetSelector: string }): string;
+    scrollToElementBySelector(args: { targetSelector: string }): string;
+    pressOnElement(args: { data: string }): string;
+    scrollToElement(args: { data: string }): string;
 }
