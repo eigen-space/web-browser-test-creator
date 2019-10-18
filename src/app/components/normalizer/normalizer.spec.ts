@@ -12,7 +12,7 @@ describe('Normalizer', () => {
 
     describe('#normalizeSpecFileName', () => {
         it('should get the file name from the suite name', () => {
-            expect(normalizer.normalizeSpecFileName('file name')).toEqual('file-name.spec.ts');
+            expect(normalizer.normalizeSpecFileName('file name')).toEqual(`file-name.${Normalizer.BASE_SPEC_NAME}`);
         });
     });
 });

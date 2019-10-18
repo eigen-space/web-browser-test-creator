@@ -1,4 +1,5 @@
 export class Normalizer {
+    static BASE_SPEC_NAME = 'e2e.spec.ts';
 
     // noinspection JSMethodCanBeStatic
     normalizeTitle(name: string): string {
@@ -15,6 +16,6 @@ export class Normalizer {
         const normalizedName = name
             .toLowerCase()
             .replace(/\s/g, '-');
-        return `${normalizedName}.spec.ts`;
+        return `${normalizedName}.${Normalizer.BASE_SPEC_NAME}`;
     }
 }
