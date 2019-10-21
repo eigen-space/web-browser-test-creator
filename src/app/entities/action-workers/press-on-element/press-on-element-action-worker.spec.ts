@@ -1,30 +1,23 @@
-import { PageActionGenerator } from '../../../types/page-action-generator';
-import { PressButtonBySelectorActionWorker } from './press-button-by-selector-action-worker';
+import { PressOnElementActionWorker } from './press-on-element-action-worker';
+import { pageActionGeneratorMock } from '../../../mocks/page-action-generator.mock';
 
-describe('PressButtonBySelectorActionWorker', () => {
+describe('PressOnElementActionWorker', () => {
 
-    function buildStep(targetSelector = ''): string {
-        return `Press on button by selector ${targetSelector}`;
+    function buildStep(data = '', typeElement = 'element'): string {
+        return `Press on ${typeElement} '${data}'`;
     }
 
-    const generator: PageActionGenerator = {
-        openPage: jest.fn(),
-        inputValueBySelector: jest.fn(),
-        pressOnButtonBySelector: jest.fn(),
-        checkPageScreen: jest.fn()
-    };
-
-    const worker = new PressButtonBySelectorActionWorker(generator);
+    const worker = new PressOnElementActionWorker(pageActionGeneratorMock);
 
     describe('#do', () => {
 
         it('should call the adapter method with the correct parameters', () => {
-            const targetSelector = '//[@id=selector]';
-            const step = buildStep(targetSelector);
+            const data = 'title';
+            const step = buildStep(data);
 
             worker.do(step);
 
-            expect(generator.pressOnButtonBySelector).toBeCalledWith({ targetSelector });
+            expect(pageActionGeneratorMock.pressOnElement).toBeCalledWith({ data });
         });
 
         it('should throw an error when the step does not contain the some parameters', () => {
