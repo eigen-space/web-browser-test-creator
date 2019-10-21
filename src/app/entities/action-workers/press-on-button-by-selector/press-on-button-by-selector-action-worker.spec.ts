@@ -1,24 +1,23 @@
-import { InputBySelectorActionWorker } from './input-by-selector-action-worker';
+import { PressOnButtonBySelectorActionWorker } from './press-on-button-by-selector-action-worker';
 import { pageActionGeneratorMock } from '../../../mocks/page-action-generator.mock';
 
-describe('InputBySelectorActionWorker', () => {
+describe('PressOnButtonBySelectorActionWorker', () => {
 
-    function buildStep(value = '', selector = ''): string {
-        return `Enter ${value} in the input field by selector ${selector}`;
+    function buildStep(targetSelector = ''): string {
+        return `Press on button by selector ${targetSelector}`;
     }
 
-    const worker = new InputBySelectorActionWorker(pageActionGeneratorMock);
+    const worker = new PressOnButtonBySelectorActionWorker(pageActionGeneratorMock);
 
     describe('#do', () => {
 
         it('should call the adapter method with the correct parameters', () => {
-            const value = 'someValue';
             const targetSelector = '//[@id=selector]';
-            const step = buildStep(value, targetSelector);
+            const step = buildStep(targetSelector);
 
             worker.do(step);
 
-            expect(pageActionGeneratorMock.inputValueBySelector).toBeCalledWith({ value, targetSelector });
+            expect(pageActionGeneratorMock.pressOnButtonBySelector).toBeCalledWith({ targetSelector });
         });
 
         it('should throw an error when the step does not contain the some parameters', () => {
@@ -35,7 +34,8 @@ describe('InputBySelectorActionWorker', () => {
         });
 
         it('should return false if the worker does not processes this step', () => {
-            expect(worker.checkAffiliation('step')).toBeFalsy();
+            const step = buildStep().replace(' ', '');
+            expect(worker.checkAffiliation(step)).toBeFalsy();
         });
     });
 });

@@ -1,5 +1,5 @@
-import { PageActionGenerator } from '../../../types/page-action-generator';
 import { OpenPageActionWorker } from './open-page-action-worker';
+import { pageActionGeneratorMock } from '../../../mocks/page-action-generator.mock';
 
 describe('OpenPageActionWorker', () => {
 
@@ -7,14 +7,7 @@ describe('OpenPageActionWorker', () => {
         return `Open page on ${url}`;
     }
 
-    const generator: PageActionGenerator = {
-        openPage: jest.fn(),
-        inputValueBySelector: jest.fn(),
-        pressOnButtonBySelector: jest.fn(),
-        checkPageScreen: jest.fn()
-    };
-
-    const worker = new OpenPageActionWorker(generator);
+    const worker = new OpenPageActionWorker(pageActionGeneratorMock);
 
     describe('#do', () => {
 
@@ -24,7 +17,7 @@ describe('OpenPageActionWorker', () => {
 
             worker.do(step);
 
-            expect(generator.openPage).toBeCalledWith({ url });
+            expect(pageActionGeneratorMock.openPage).toBeCalledWith({ url });
         });
 
         it('should throw an error when the step does not contain the some parameters', () => {
