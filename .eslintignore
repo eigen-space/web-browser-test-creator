@@ -2,4 +2,3 @@ out-tsc/**/*
 dist/**/*
 coverage/**/*
 **/node_modules/**/*
-**/generated/**/*
