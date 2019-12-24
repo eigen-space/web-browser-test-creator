@@ -1,8 +1,11 @@
 {
-    "name": "@arrival/web-e2e-spec-creator",
+    "name": "@cybernated/web-e2e-spec-creator",
     "version": "1.0.0",
     "description": "e2e generation specifications",
     "main": "index.ts",
+    "publishConfig": {
+        "registry": "https://artifacts.core.arrival.co/repository/ce-frontend/"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/cybernated/web-e2e-spec-creator.git"
