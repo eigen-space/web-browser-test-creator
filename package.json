@@ -1,6 +1,6 @@
 {
     "name": "@cybernated/web-e2e-spec-creator",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "e2e generation specifications",
     "main": "index.ts",
     "publishConfig": {
