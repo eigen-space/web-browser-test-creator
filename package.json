@@ -54,6 +54,6 @@
         "typescript": "3.5.3"
     },
     "dependencies": {
-        "@eigenspace/helper-scripts": "1.0.79"
+        "@eigenspace/helper-scripts": "2.0.3-core"
     }
 }
