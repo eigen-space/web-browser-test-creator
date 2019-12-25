@@ -172,10 +172,10 @@
   resolved "https://registry.yarnpkg.com/@eigenspace/eslint-plugin-script-rules/-/eslint-plugin-script-rules-0.0.2.tgz#84b8214b1377ea09038b00b298a3d8226ccdcd98"
   integrity sha512-DE3BuALIRWtcU2eTEFxNt44bWS+Q8O6oK/qVMb14C6+oQK/fbn4jZiwDcSBw2Sx69kCtwllYbo/RQWQB/jZkSw==
 
-"@eigenspace/helper-scripts@2.0.3-core":
-  version "2.0.3-core"
-  resolved "https://registry.yarnpkg.com/@eigenspace/helper-scripts/-/helper-scripts-2.0.3-core.tgz#b3f98e5712cf5524659660a5b01b636a9cc128d1"
-  integrity sha512-apts52s4lZSqReQyjDy5a44XwH2M6bGq6fKouegJZnIwYprdeBnwbCYlR7GJH6icYtlJB0jKRTY1E4JskXz7lw==
+"@eigenspace/helper-scripts@2.0.5-core":
+  version "2.0.5-core"
+  resolved "https://registry.yarnpkg.com/@eigenspace/helper-scripts/-/helper-scripts-2.0.5-core.tgz#3f004adc886e3ec0530646cef1742cc1ca3a66cc"
+  integrity sha512-nAkjYwIyTcS06NoDmqag72CVEFtOR2kljDSOWdtNLQe6l63xmJdchFaFCi0lA3O20WCP9BXTAGHUKV2DeS5oYA==
   dependencies:
     "@eigenspace/argument-parser" "1.0.2"
 
