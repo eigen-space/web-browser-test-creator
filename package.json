@@ -1,7 +1,7 @@
 {
-    "name": "@cybernated/web-e2e-spec-creator",
-    "version": "1.0.1",
-    "description": "e2e generation specifications",
+    "name": "@cybernated/web-browser-test-creator",
+    "version": "1.0.3",
+    "description": "Provides a human-understandable language for describing browser specs",
     "main": "index.ts",
     "publishConfig": {
         "registry": "https://artifacts.core.arrival.co/repository/ce-frontend/"
@@ -40,6 +40,9 @@
             "git add"
         ]
     },
+    "dependencies": {
+        "@eigenspace/helper-scripts": "2.0.5-core"
+    },
     "devDependencies": {
         "@eigenspace/codestyle": "1.1.67",
         "@eigenspace/common-types": "0.0.20",
@@ -52,8 +55,5 @@
         "lint-staged": "8.1.7",
         "ts-jest": "24.0.2",
         "typescript": "3.5.3"
-    },
-    "dependencies": {
-        "@eigenspace/helper-scripts": "2.0.5-core"
     }
 }
