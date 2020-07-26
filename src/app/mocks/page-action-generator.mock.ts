@@ -1,4 +1,4 @@
-import { PageActionGenerator } from '../types/page-action-generator';
+import { PageActionGenerator } from '../..';
 
 export const pageActionGeneratorMock: PageActionGenerator = {
     openPage: jest.fn(),
@@ -8,5 +8,6 @@ export const pageActionGeneratorMock: PageActionGenerator = {
     pause: jest.fn(),
     scrollToElementBySelector: jest.fn(),
     pressOnElement: jest.fn(),
-    scrollToElement: jest.fn()
+    scrollToElement: jest.fn(),
+    checkRequest: jest.fn()
 };

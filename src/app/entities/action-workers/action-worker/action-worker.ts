@@ -1,4 +1,4 @@
-import { PageActionGenerator } from '../../../types/page-action-generator';
+import { PageActionGenerator } from '../../../..';
 
 export abstract class ActionWorker<P = {}> {
     protected requiredFieldNames: (keyof P)[] = [];

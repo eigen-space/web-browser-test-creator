@@ -1,10 +1,10 @@
 import { SpecBuilder } from '../spec-builder/spec-builder';
-import { ActionGenerator } from '../../types/action-generator';
+import { ActionGenerator } from '../../..';
 import { ActionManager } from '../action-manager/action-manager';
 import * as path from 'path';
 import { FsManager } from '../fs-manager/fs-manager';
-import { SpecSuitConfig } from '../../types/spec-config';
-import { Normalizer } from '../normalizer/normalizer';
+import { SpecSuitConfig } from '../../..';
+import { Normalizer } from '../../..';
 
 // noinspection JSUnusedGlobalSymbols
 export class SpecGenerator {
@@ -40,6 +40,6 @@ export class SpecGenerator {
         const outputFile = path.join(this.outputDir, this.normalizer.normalizeSpecFileName(specTitle));
         this.fsManager.writeFile(outputFile, generatedSpec);
         // eslint-disable-next-line
-        console.log(`Spec for "${specTitle}" scenario  is generated!`);
+        console.log(`A spec for the "${specTitle}" scenario has been generated!`);
     }
 }
