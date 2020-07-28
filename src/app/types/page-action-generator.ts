@@ -7,4 +7,5 @@ export interface PageActionGenerator {
     scrollToElementBySelector(args: { targetSelector: string }): string;
     pressOnElement(args: { data: string }): string;
     scrollToElement(args: { data: string }): string;
+    checkRequest(args: { method: string, url: string, bodyPath: string }): string;
 }

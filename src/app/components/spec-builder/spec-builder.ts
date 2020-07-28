@@ -1,6 +1,6 @@
 import { ActionManager } from '../action-manager/action-manager';
-import { ActionGenerator } from '../../types/action-generator';
-import { SpecSuitConfig } from '../../types/spec-config';
+import { ActionGenerator } from '../../..';
+import { SpecSuitConfig } from '../../..';
 import * as os from 'os';
 
 export class SpecBuilder {
@@ -13,7 +13,6 @@ export class SpecBuilder {
     run(config: Required<SpecSuitConfig>): string {
         const scenarioSpecItems = config.scenarios.map(scenario => {
             const steps = scenario.steps.map(step => this.manager.getConvertedStep(step));
-            steps.push(this.actionGenerator.checkPageScreen({ title: scenario.title }));
             return this.actionGenerator.wrapToItemSpec({ title: scenario.title, steps: steps.join(os.EOL) });
         });
 
