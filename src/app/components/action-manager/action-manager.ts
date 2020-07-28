@@ -1,4 +1,4 @@
-import { PageActionGenerator } from '../../types/page-action-generator';
+import { PageActionGenerator } from '../../..';
 import { ActionWorker } from '../../entities/action-workers/action-worker/action-worker';
 import { InputBySelectorActionWorker } from '../../entities/action-workers/input-by-selector/input-by-selector-action-worker';
 import { OpenPageActionWorker } from '../../entities/action-workers/open-page/open-page-action-worker';
@@ -7,6 +7,8 @@ import { ScrollToElementActionWorker } from '../../entities/action-workers/scrol
 import { ScrollToElementBySelectorActionWorker } from '../../entities/action-workers/scrollToElementBySelector/scroll-to-element-by-selector-action-worker';
 import { PressOnElementActionWorker } from '../../entities/action-workers/press-on-element/press-on-element-action-worker';
 import { PressOnButtonBySelectorActionWorker } from '../../entities/action-workers/press-on-button-by-selector/press-on-button-by-selector-action-worker';
+import { RequestCheckActionWorker } from '../../entities/action-workers/request-check/request-check-action-worker';
+import { CheckPageScreenActionWorker } from '../../entities/action-workers/check-page-screen/check-page-screen-action-worker';
 
 export class ActionManager {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,7 +22,9 @@ export class ActionManager {
             new PauseActionWorker(actionGenerator),
             new ScrollToElementActionWorker(actionGenerator),
             new ScrollToElementBySelectorActionWorker(actionGenerator),
-            new PressOnElementActionWorker(actionGenerator)
+            new PressOnElementActionWorker(actionGenerator),
+            new RequestCheckActionWorker(actionGenerator),
+            new CheckPageScreenActionWorker(actionGenerator)
         ];
     }
 
