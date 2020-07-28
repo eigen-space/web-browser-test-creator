@@ -1,6 +1,6 @@
 {
     "name": "@cybernated/web-browser-test-creator",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Provides a human-understandable language for describing browser specs",
     "main": "index.ts",
     "publishConfig": {
