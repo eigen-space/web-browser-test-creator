@@ -18,7 +18,7 @@ export class InputBySelectorActionWorker extends ActionWorker<ParsedParams> {
     };
 
     protected getStepPattern(): RegExp {
-        return /^Enter\s(.*)\sin\sthe\sinput\sfield\sby\sselector\s(.*)$/g;
+        return /^Enter\s'(.*)'\sin\sthe\sinput\sfield\s'(.*)'$/g;
     };
 
     protected getStepName(): string {
