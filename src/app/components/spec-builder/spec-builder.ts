@@ -12,7 +12,7 @@ export class SpecBuilder {
 
     run(config: Required<SpecSuitConfig>): string {
         const scenarioSpecItems = config.scenarios.map(scenario => {
-            const steps = scenario.steps.map(step => this.manager.getConvertedStep(step));
+            const steps = scenario.steps.map(this.manager.getConvertedStep);
             return this.actionGenerator.wrapToItemSpec({ title: scenario.title, steps: steps.join(os.EOL) });
         });
 
