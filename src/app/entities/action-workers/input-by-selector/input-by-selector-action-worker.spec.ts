@@ -4,7 +4,7 @@ import { pageActionGeneratorMock } from '../../../mocks/page-action-generator.mo
 describe('InputBySelectorActionWorker', () => {
 
     function buildStep(value = '', selector = ''): string {
-        return `Enter ${value} in the input field by selector ${selector}`;
+        return `Enter '${value}' in the input field '${selector}'`;
     }
 
     const worker = new InputBySelectorActionWorker(pageActionGeneratorMock);

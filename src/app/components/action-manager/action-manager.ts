@@ -4,7 +4,6 @@ import { InputBySelectorActionWorker } from '../../entities/action-workers/input
 import { OpenPageActionWorker } from '../../entities/action-workers/open-page/open-page-action-worker';
 import { PauseActionWorker } from '../../entities/action-workers/pause/pause-action-worker';
 import { ScrollToElementActionWorker } from '../../entities/action-workers/scrollToElement/scroll-to-element-action-worker';
-import { ScrollToElementBySelectorActionWorker } from '../../entities/action-workers/scrollToElementBySelector/scroll-to-element-by-selector-action-worker';
 import { PressOnElementActionWorker } from '../../entities/action-workers/press-on-element/press-on-element-action-worker';
 import { PressOnButtonBySelectorActionWorker } from '../../entities/action-workers/press-on-button-by-selector/press-on-button-by-selector-action-worker';
 import { RequestCheckActionWorker } from '../../entities/action-workers/request-check/request-check-action-worker';
@@ -21,7 +20,6 @@ export class ActionManager {
             new PressOnButtonBySelectorActionWorker(actionGenerator),
             new PauseActionWorker(actionGenerator),
             new ScrollToElementActionWorker(actionGenerator),
-            new ScrollToElementBySelectorActionWorker(actionGenerator),
             new PressOnElementActionWorker(actionGenerator),
             new RequestCheckActionWorker(actionGenerator),
             new CheckPageScreenActionWorker(actionGenerator)

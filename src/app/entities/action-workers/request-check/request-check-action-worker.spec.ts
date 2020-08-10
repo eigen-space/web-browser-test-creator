@@ -3,36 +3,35 @@ import { RequestCheckActionWorker } from './request-check-action-worker';
 
 describe('RequestCheckActionWorker', () => {
 
-    function buildStep(method = '', url = '', jsonPath = ''): string {
-        return `Check whether ${method}-request to '${url}' is '${jsonPath}'`;
+    function buildStep(method = '', url = ''): string {
+        return `Check ${method}-request to '${url}'`;
     }
 
     const worker = new RequestCheckActionWorker(pageActionGeneratorMock);
 
     const url = 'http://localhost:3001/invoices/list';
     const method = 'POST';
-    const bodyPath = 'test-contract-api.json';
 
     describe('#do', () => {
 
         it('should call the adapter method with the correct parameters', () => {
-            const step = buildStep(method, url, bodyPath);
+            const step = buildStep(method, url);
 
             worker.do(step);
 
-            expect(pageActionGeneratorMock.checkRequest).toBeCalledWith({ url, method, bodyPath });
+            expect(pageActionGeneratorMock.checkRequest).toBeCalledWith({ url, method });
         });
     });
 
     describe('#checkAffiliation', () => {
 
         it('should return true if the worker processes this step', () => {
-            const step = buildStep(method, url, bodyPath);
+            const step = buildStep(method, url);
             expect(worker.checkAffiliation(step)).toBeTruthy();
         });
 
         it('should return false if the worker does not processes this step because of url', () => {
-            const step = `Check whether POST-request is \'${bodyPath}\'`;
+            const step = 'Check POST-request';
             expect(worker.checkAffiliation(step)).toBeFalsy();
         });
     });
