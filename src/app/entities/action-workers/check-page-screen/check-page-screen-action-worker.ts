@@ -6,8 +6,8 @@ interface ParsedParams {
 
 export class CheckPageScreenActionWorker extends ActionWorker<ParsedParams> {
 
-    protected runAutomationToolMethod(args: { title: string }): string {
-        return this.actionGenerator.checkPageScreen(args);
+    protected runAutomationToolMethod(): string {
+        return this.actionGenerator.checkPageScreen();
     };
 
     protected parseRawArgs(rawArgs: RegExpExecArray): ParsedParams {
@@ -20,6 +20,6 @@ export class CheckPageScreenActionWorker extends ActionWorker<ParsedParams> {
     }
 
     protected getStepPattern(): RegExp {
-        return /^Check\spage\sscreen\sas\s'(.*)'$/g;
+        return /^Check\spage\sscreen$/g;
     }
 }

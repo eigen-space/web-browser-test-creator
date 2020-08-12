@@ -15,6 +15,13 @@ export class FsManager {
         return JSON.parse(fs.readFileSync(filename, 'utf8'));
     }
 
+    readWithoutComments(filename: string): string {
+        const content = fs.readFileSync(filename, 'utf8');
+        return content.split('\n')
+            .filter(line => !line.startsWith('//'))
+            .join('\n');
+    }
+
     // noinspection JSMethodCanBeStatic
     writeFile(pathFile: string, data: string): void {
         const onlyDirPath = path.dirname(pathFile);

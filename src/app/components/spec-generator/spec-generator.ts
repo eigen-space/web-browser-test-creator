@@ -5,6 +5,7 @@ import * as path from 'path';
 import { FsManager } from '../fs-manager/fs-manager';
 import { SpecSuitConfig } from '../../..';
 import { Normalizer } from '../../..';
+import * as prettier from 'prettier';
 
 // noinspection JSUnusedGlobalSymbols
 export class SpecGenerator {
@@ -36,9 +37,18 @@ export class SpecGenerator {
 
         const specTitle = config.title || this.normalizer.normalizeTitle(file);
         const generatedSpec = this.builder.run({ ...config, title: specTitle });
+        const formattedGeneratedSpec = prettier.format(
+            generatedSpec,
+            {
+                parser: 'typescript',
+                tabWidth: 4,
+                singleQuote: true,
+                trailingComma: 'none'
+            }
+        );
 
         const outputFile = path.join(this.outputDir, this.normalizer.normalizeSpecFileName(specTitle));
-        this.fsManager.writeFile(outputFile, generatedSpec);
+        this.fsManager.writeFile(outputFile, formattedGeneratedSpec);
         // eslint-disable-next-line
         console.log(`A spec for the "${specTitle}" scenario has been generated!`);
     }
