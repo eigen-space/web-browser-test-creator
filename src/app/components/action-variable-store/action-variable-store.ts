@@ -1,4 +1,5 @@
 import { IpDetector } from '../ip-detector/ip-detector';
+import { ManualConfigReader } from '../manual-config-reader/manual-config-reader';
 
 interface Data {
     [property: string]: () => string;
@@ -6,7 +7,7 @@ interface Data {
 
 export class ActionVariableStore {
     private static DATA: Data = {
-        MY_IP: IpDetector.getMyIp
+        MY_IP: () => ManualConfigReader.getIp() || IpDetector.getMyIp()
     };
 
     get(name: string): string {

@@ -39,7 +39,12 @@ export class SpecGenerator {
         const generatedSpec = this.builder.run({ ...config, title: specTitle });
         const formattedGeneratedSpec = prettier.format(
             generatedSpec,
-            { parser: 'typescript', tabWidth: 4, singleQuote: true }
+            {
+                parser: 'typescript',
+                tabWidth: 4,
+                singleQuote: true,
+                trailingComma: 'none'
+            }
         );
 
         const outputFile = path.join(this.outputDir, this.normalizer.normalizeSpecFileName(specTitle));
