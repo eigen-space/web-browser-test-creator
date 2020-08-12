@@ -1,4 +1,3 @@
-import { ActionWorker } from './action-worker';
 import { pageActionGeneratorMock } from '../../../mocks/page-action-generator.mock';
 import { SomeActionWorker } from './action-worker.data';
 
