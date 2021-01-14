@@ -38,13 +38,15 @@
         ]
     },
     "dependencies": {
-        "@eigenspace/helper-scripts": "2.0.5-core"
+        "@eigenspace/helper-scripts": "2.0.5-core",
+        "prettier": "2.0.5"
     },
     "devDependencies": {
         "@eigenspace/codestyle": "1.1.67",
         "@eigenspace/common-types": "0.0.20",
         "@types/jest": "24.0.13",
         "@types/node": "12.7.12",
+        "@types/prettier": "2.0.2",
         "eslint": "5.16.0",
         "eslint-plugin-eigenspace-script": "0.0.18",
         "husky": "2.3.0",

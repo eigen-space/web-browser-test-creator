@@ -27,6 +27,7 @@ We can take the [implementation](https://github.com/eigenspace/web-wdio-e2e-kit)
 # Why do we have that dependencies?
 
 * `@eigenspace/helper-scripts` - helps us to travel directory.
+* `prettier` - used for formatting Typescript specifications.
 
 # Why do we have that dev dependencies?
 
